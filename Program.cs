@@ -1,188 +1,71 @@
 ﻿//ari_conway
-//Assignment 7
+//Do-While Statements
 
-//1
-
-//a
-using System;
-
-int[] num = new int[10];
-
-for (int i = 0; i < num.Length; i++)
+int i = 0;
+do //keep doing/ do/ repeat...
 {
-    num[i] = i + 1;
-}
+    //Console.WriteLine($"Iteration {++i}: Hello DoWhile!");
+    Console.WriteLine($"Iteration {++i}: Hello DoWhile!");
+    //break;
 
-//b
-for (int i = 0; i < num.Length; i++)
+} while (false); //...as long as
+
+Console.WriteLine($"This loop ran {i} times");
+
+//repeat the play
+
+char ans;
+do
 {
-    num[i] *= num[i];
-}
+    Console.WriteLine("Please enter your name: ");
+    string player1 = (Console.ReadLine());
 
-//c
-int sum = 0;
+    Console.WriteLine($"{player1}, enter your secret word: "); //a num between 1 and 20
+    string secretWord = Console.ReadLine();
 
-for (int i = 0; i < num.Length; i++)
+    Console.Clear();
+
+    Console.WriteLine("Player 2, please enter your name: ");
+    string player2 = Console.ReadLine();
+
+    Console.WriteLine($"{player2}, guess the secret word!"); //a num between 1 and 20
+    string guess = Console.ReadLine();
+
+    Console.WriteLine(guess.Equals(secretWord) ? "Congrats! You won!" : "Sorry, you lost!");
+
+    Console.WriteLine("Would you like to play again? (Y/N)");
+    ans = Convert.ToChar(Console.ReadLine());
+} while (ans == 'y'); //as long as the answer is yes...
+
+
+
+//if (guess.Equals(secretWord)) //(guess == secretWord) 
+//{
+//    Console.WriteLine("Congrats! You won!");
+//}
+//else
+//{
+//    Console.WriteLine("Sorry, you lost!");
+//}
+
+//input validation
+
+byte m;
+do //keep prompting user for a month between 1 and 12
 {
-    sum = sum + num[i];
-}
-Console.WriteLine($"The sum of the values of array num is {sum}");
+    Console.WriteLine("Please enter a month (1-12)");
+    m = Convert.ToByte(Console.ReadLine());
+} while (m<1 || m>12); //as long as there is an invalid input
 
-//---------------------------------
+bool validMonth = m >= 1 && m <= 12;
+bool invalidMonth = !validMonth;
 
-//2
-
-//a
-Console.WriteLine("How many students are in the class?");
-int numStudents = Convert.ToInt32(Console.ReadLine());
-
-float[] students = new float[numStudents];
-
-float max = Single.MinValue;
-float min = Single.MaxValue;
-float avg = 0f;
-
-for (int i = 0; i < students.Length; i++)
+byte counter = 1;
+do
 {
-    Console.Write($"Please enter the grade for student {i+1}: ");
-    students[i] = Convert.ToSingle(Console.ReadLine);
-}
+    counter++;
 
-for (int i = 0; i < students.Length; i++)
-{
-    if (students[i] > max)
-    {
-        max = students[i];
-    }
-    if (students[i] < min)
-    {
-        min = students[i];
-    }
-    avg = students[i] + avg;
-}
+} while (counter <= 5);
 
-avg = avg / numStudents;
-
-Console.WriteLine($"The minimum grade is {min}.\n" +
-    $"The maximum grade is {max}.\n" +
-    $"The average is {avg}.");
-
-//b
-
-//--------------------------------------
-
-//3
-
-//a
-char[] arrayA = { 'a', 'b', 'c', 'd', 'e' };
-
-for (int i = 4; i >= 0; i--)
-{
-    Console.WriteLine(arrayA[i]);
-}
-
-//b
-char[] arrayB = new char[5];
-
-for (int i = 4; i >= 0; i--)
-{
-    arrayB[i] = arrayA[i];
-}
-
-foreach (char element in arrayA)
-{
-    Console.Write($"{element} ");
-}
-
-Console.WriteLine("\n");
-
-foreach (char element in arrayB)
-{
-    Console.Write($"{element} ");
-}
-
-//------------------------------------------
-
-//4
-
-//int smallestNum = 100;
-//int biggestNum = 0;
-int biggestDiff = 0;
-int smallestDiff = 100;
-int biggestDifMaxI = 0;
-int biggestDifMinI = 0;
-int smallestDifMaxI = 0;
-int smallestDifMinI = 0;
-
-int[] arrayC = { 7, 17, 13, 2, 3, 11, 40, 30, 27, 15 };
-
-for (int i = 0; i < arrayC.Length - 1; i++)
-{
-    int diff = Math.Abs(arrayC[i] - arrayC[i + 1]);
-    //Console.WriteLine($"{arrayC[i]}, {arrayC[i + 1]}");
-    if (diff < smallestDiff)
-    {
-        smallestDiff = diff;
-        smallestDifMinI = arrayC[i];
-        smallestDifMaxI = arrayC[i + 1];
-    }
-
-    if (diff > biggestDiff)
-    {
-        biggestDiff = diff;
-        biggestDifMinI = arrayC[i];
-        biggestDifMaxI = arrayC[i + 1];
-    }
-}
-Console.WriteLine($"Biggest difference = {biggestDiff}, Smallest difference = {smallestDiff}.\n" +
-    $"First i of smallest difference is {smallestDifMinI}, second i of biggest difference is {smallestDifMaxI}.\n" +
-    $"First i of biggest difference is {biggestDifMinI}, second i of biggest difference is {biggestDifMaxI}.");
-
-//b
-for (int i = 0; i < arrayC.Length - 1; i++)
-{
-    Console.WriteLine($"Outer loop iteration {i}:");
-    for (int j = i + 1; j < arrayC.Length; j++)
-    {
-        Console.WriteLine($"{arrayC[i]}, {arrayC[j]}");
-    }
-    Console.WriteLine($"End of outer loop iteration {i}\n");
-}
-
-//5
-
-//6
-
-//a
-int[] array6a = {41, 3, 74, 2, 83};
-
-for (int i = 0; i <= array6a.Length; i++)
-{
-    if (array6a[i] > array6a[i + 1])
-    {
-        Console.WriteLine(array6a[i]);  
-    }
-}
-
-
-
-int[] array6b = {10, 34, 96, 5, 2};
-
-
-
-//-----------------------------------
-
-//7
-
-string id = "2334664";
-
-int idInt = (int)id;
-
-//---------------------------------
-
-//8
-
-
-
-//9
-
+//0 - n times counted = N + 1 times
+//1 - n times counted = N times
